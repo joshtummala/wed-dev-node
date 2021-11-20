@@ -6,6 +6,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+port = process.env.PORT || 4000;
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -24,4 +26,4 @@ app.get("/hello", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(4000);
+app.listen(port);
