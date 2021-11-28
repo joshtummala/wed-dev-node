@@ -2,6 +2,10 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+
+mongoose.connect("mongodb://localhost:27017/webdev");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -25,5 +29,7 @@ require("./services/tweets-service")(app);
 app.get("/hello", (req, res) => {
   res.send("Hello World!");
 });
+
+require("./movies/service")(app);
 
 app.listen(port);
